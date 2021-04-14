@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Brand;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class ProductController extends Controller
      * @param  mixed $request
      * @return void
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $request['slug'] = Str::slug($request->name);
 
@@ -54,7 +55,7 @@ class ProductController extends Controller
      * @param  mixed $product
      * @return void
      */
-    public function edit(Request $request, Product $product)
+    public function edit(Product $product)
     {
         $brands = Brand::all();
 
@@ -68,7 +69,7 @@ class ProductController extends Controller
      * @param  mixed $product
      * @return void
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
         $request['slug'] = Str::slug($request->name);
 
