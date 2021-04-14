@@ -33,6 +33,16 @@ class Product extends Model
     ];
 
     /**
+     * brand
+     *
+     * @return void
+     */
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    /**
      * getRouteKeyName
      *
      * @return void
