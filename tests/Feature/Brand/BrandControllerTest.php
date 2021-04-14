@@ -53,7 +53,7 @@ class BrandControllerTest extends TestCase
         ->assertRedirect("login");
     }
 
-        /**
+    /**
      * @return void
      * @test
      */
@@ -137,7 +137,7 @@ class BrandControllerTest extends TestCase
             ->assertViewIs("brands.edit");
     }
 
-        /**
+    /**
      * @return void
      * @test
      */
@@ -178,7 +178,7 @@ class BrandControllerTest extends TestCase
         $this->assertDatabaseHas('brands', $data);
     }
 
-            /**
+    /**
      * @return void
      * @test
      */
@@ -214,4 +214,5 @@ class BrandControllerTest extends TestCase
             "slug"  => $brand->slug,
         ]);
     }
+
 }
