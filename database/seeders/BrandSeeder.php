@@ -43,7 +43,6 @@ class BrandSeeder extends Seeder
             echo "\t" . "Creating brand " . $brand[ 'name' ] . "\n";
             Brand::updateOrCreate(
                 [
-                    "name" => $brand[ 'name' ],
                     "slug" => $brand[ 'slug' ],
                 ],
                 [
