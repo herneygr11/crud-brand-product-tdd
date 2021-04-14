@@ -17,7 +17,19 @@
                             <thead class="bg-gray-50">
                                 <tr class="text-gray-600 text-left">
                                     <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
-                                        Name
+                                        Nombre
+                                    </th>
+                                    <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                                        Marca
+                                    </th>
+                                    <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                                        Talla
+                                    </th>
+                                    <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                                        Stock
+                                    </th>
+                                    <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                                        Embarque
                                     </th>
                                     <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
                                         slug
@@ -35,6 +47,42 @@
                                             <div>
                                                 <p class="text-center">
                                                     {{ $product->name }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center justify-center">
+                                            <div>
+                                                <p class="text-center">
+                                                    {{ $product->brand->name }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center justify-center">
+                                            <div>
+                                                <p class="text-center">
+                                                    {{ $product->size }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center justify-center">
+                                            <div>
+                                                <p class="text-center">
+                                                    {{ $product->stock }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center justify-center">
+                                            <div>
+                                                <p class="text-center">
+                                                    {{ \Carbon\Carbon::parse($product->shipment)->diffForHumans() }}
                                                 </p>
                                             </div>
                                         </div>

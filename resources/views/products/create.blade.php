@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl md:w-2/4 mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <form action="{{ route('products.store') }}" method="POST" class="max-w-md mx-auto">
                     @csrf
@@ -70,7 +70,7 @@
 
                     <hr class="my-4">
 
-                    <input type="submit" value="Guardar" class="bg-blue-500 font-bold p-2 rounded-md">
+                    <input type="submit" value="Guardar" class="bg-blue-500 font-bold p-2 rounded-md w-full my-2">
                 </form>
             </div>
         </div>

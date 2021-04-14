@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl md:w-2/4 mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <form action="{{ route('products.update', $product->slug) }}" method="POST" class="max-w-md mx-auto">
                     @csrf
@@ -59,9 +59,7 @@
                     @endif
 
                     <label for="observations" class="block font-medium text-sm text-gray-700">Observaciones *</label>
-                    <textarea class="form-input w-full rounded-md shadow-sm @error('observations') border-red-500 @enderror" name="observations">
-                        {{ old('observations', $product->observations) }}
-                    </textarea>
+                    <textarea class="form-input w-full rounded-md shadow-sm @error('observations') border-red-500 @enderror" name="observations">{{ old('observations', $product->observations) }}</textarea>
                     @if ($errors->has('observations'))
                     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
                         {{ $errors->first('observations') }}
@@ -70,7 +68,7 @@
 
                     <hr class="my-4">
 
-                    <input type="submit" value="Guardar" class="bg-blue-500 font-bold p-2 rounded-md">
+                    <input type="submit" value="Guardar" class="bg-blue-500 font-bold p-2 rounded-md w-full my-2">
                 </form>
             </div>
         </div>
