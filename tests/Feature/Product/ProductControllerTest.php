@@ -3,6 +3,7 @@
 namespace Tests\Feature\Product;
 
 use App\Models\Brand;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -114,5 +115,37 @@ class ProductControllerTest extends TestCase
             "size"      => $data["size"],
             "stock"     => $data["stock"],
         ]);
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function an_unauthenticated_user_cannot_see_the_product_edit_view()
+    {
+        $product = Product::factory()->create();
+
+        $this->get(route('products.edit', $product->slug))
+        ->assertStatus(302)
+        ->assertRedirect("login");
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function an_authenticated_user_can_see_the_product_edit_view()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $product = Product::factory()->create();
+
+        $this
+            ->get(route('products.edit', $product->slug))
+            ->assertStatus(200)
+            ->assertViewIs("products.edit");
     }
 }
