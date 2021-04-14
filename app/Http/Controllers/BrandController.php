@@ -18,4 +18,15 @@ class BrandController extends Controller
 
         return view('brands.index', compact('brands'));
     }
+
+    /**
+     * create
+     *
+     * @return void
+     */
+    public function create()
+    {
+        return view('brands.create');
+    }
+
 }
