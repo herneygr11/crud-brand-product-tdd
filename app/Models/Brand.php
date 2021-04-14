@@ -19,4 +19,14 @@ class Brand extends Model
         "slug",
     ];
 
+    /**
+     * getRouteKeyName
+     *
+     * @return void
+     */
+    public function getRouteKeyName()
+    {
+    return 'slug';
+    }
+
 }
