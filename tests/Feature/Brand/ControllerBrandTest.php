@@ -8,15 +8,19 @@ use Tests\TestCase;
 
 class ControllerBrandTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic feature test example.
      *
      * @return void
+     * @test
      */
-    public function test_example()
+    public function an_authenticated_user_can_see_the_brand_index_view()
     {
-        $response = $this->get('/');
+        $this->withoutExceptionHandling();
 
+        $response = $this->get(route('brands.index'));
         $response->assertStatus(200);
     }
 }
