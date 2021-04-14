@@ -23,6 +23,4 @@ Route::resource('brands', App\Http\Controllers\BrandController::class)
 Route::resource('products', App\Http\Controllers\ProductController::class)
 ->middleware('auth');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware(['auth:sanctum', 'verified']);

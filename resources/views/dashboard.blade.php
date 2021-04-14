@@ -20,12 +20,12 @@
                                         <p class="text-gray-500 font-semibold">Total de marcas</p>
                                         <div class="flex items-baseline space-x-4">
                                             <h2 class="text-2xl font-semibold">
-                                                34,567
+                                                {{ $countBrand }}
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" class="block p-3 text-lg font-semibold bg-purple-50 text-purple-800 hover:bg-purple-100 cursor-pointer">
+                                <a href="{{ route('brands.index') }}" class="block p-3 text-lg font-semibold bg-purple-50 text-purple-800 hover:bg-purple-100 cursor-pointer">
                                     Ver
                                 </a>
                             </div>
@@ -35,12 +35,12 @@
                                         <p class="text-gray-500 font-semibold">Total de productos</p>
                                         <div class="flex items-baseline space-x-4">
                                             <h2 class="text-2xl font-semibold">
-                                                34,567
+                                                {{ $countProduct }}
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" class="block p-3 text-lg font-semibold bg-purple-50 text-purple-800 hover:bg-purple-100 cursor-pointer">
+                                <a href="{{ route('products.index') }}" class="block p-3 text-lg font-semibold bg-purple-50 text-purple-800 hover:bg-purple-100 cursor-pointer">
                                     Ver
                                 </a>
                             </div>
