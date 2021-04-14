@@ -96,7 +96,7 @@ class ControllerBrandTest extends TestCase
         ];
 
         $this
-            ->post(route('brands.store'), )
+            ->post(route('brands.store'), $data)
             ->assertStatus(302)
             ->assertRedirect(route("brands.index"));
 
