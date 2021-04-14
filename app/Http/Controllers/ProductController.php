@@ -70,4 +70,10 @@ class ProductController extends Controller
         $product->update($request->all());
         return redirect()->route("products.index");
     }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return redirect()->route("products.index");
+    }
 }

@@ -11,6 +11,13 @@ class Product extends Model
     use HasFactory, SoftDeletes;
 
     /**
+     * dates
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+    /**
      * fillable
      *
      * @var array
