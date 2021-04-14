@@ -21,6 +21,8 @@
 
                     <label for="size" class="block font-medium text-sm text-gray-700">Tamaño *</label>
                     <select class="form-input w-full rounded-md shadow-sm @error('size') border-red-500 @enderror"  name="size">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
                         <option value="L">L</option>
                     </select>
                     @if ($errors->has('size'))

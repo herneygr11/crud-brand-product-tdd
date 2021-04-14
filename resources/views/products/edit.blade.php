@@ -21,7 +21,9 @@
 
                     <label for="size" class="block font-medium text-sm text-gray-700">Tamaño *</label>
                     <select class="form-input w-full rounded-md shadow-sm @error('size') border-red-500 @enderror"  name="size">
-                        <option value="L">L</option>
+                        <option @if($product->size == "S") selected @endif value="S">S</option>
+                        <option @if($product->size == "M") selected @endif value="M" value="M">M</option>
+                        <option @if($product->size == "L") selected @endif value="L" value="L">L</option>
                     </select>
                     @if ($errors->has('size'))
                         <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
@@ -40,7 +42,7 @@
                     <label for="brand_id" class="block font-medium text-sm text-gray-700">Marca *</label>
                     <select class="form-input w-full rounded-md shadow-sm @error('brand_id') border-red-500 @enderror"  name="brand_id">
                         @forelse ($brands as $brand)
-                            <option value="{{$brand->id}}">{{ $brand->name }}</option>
+                            <option @if($brand->id == $product->brand_id) selected @endif value="{{$brand->id}}">{{ $brand->name }}</option>
                         @empty
                         @endforelse
                     </select>
