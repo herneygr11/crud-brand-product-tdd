@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Brand;
 
+use App\Models\Brand;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -109,12 +110,14 @@ class ControllerBrandTest extends TestCase
      */
     public function an_unauthenticated_user_cannot_see_the_brands_edit_view()
     {
-        $this->get(route('brands.edit'))
+        $brand = Brand::factory()->create();
+
+        $this->get(route('brands.edit', $brand->slug))
         ->assertStatus(302)
         ->assertRedirect("login");
     }
 
-        /**
+    /**
      * @return void
      * @test
      */
@@ -125,8 +128,10 @@ class ControllerBrandTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
+        $brand = Brand::factory()->create();
+
         $this
-            ->get(route('brands.edit'))
+            ->get(route('brands.edit', $brand->slug))
             ->assertStatus(200)
             ->assertViewIs("brands.edit");
     }
