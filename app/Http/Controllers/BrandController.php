@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
@@ -35,8 +37,10 @@ class BrandController extends Controller
      * @param  mixed $request
      * @return void
      */
-    public function store(Request $request)
+    public function store(BrandRequest $request)
     {
+        $request['slug'] = Str::slug($request->name);
+
         Brand::create($request->all());
         return redirect()->route("brands.index");
     }
@@ -60,8 +64,10 @@ class BrandController extends Controller
      * @param  mixed $brand
      * @return void
      */
-    public function update(Request $request, Brand $brand)
+    public function update(BrandRequest $request, Brand $brand)
     {
+        $request['slug'] = Str::slug($request->name);
+
         $brand->update($request->all());
         return redirect()->route("brands.index");
     }
