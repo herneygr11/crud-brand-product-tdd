@@ -12,8 +12,17 @@ class ControllerBrandTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * A basic feature test example.
-     *
+     * @return void
+     * @test
+     */
+    public function an_unauthenticated_user_cannot_see_the_brands_view()
+    {
+        $this->get(route('brands.index'))
+        ->assertStatus(302)
+        ->assertRedirect("login");
+    }
+
+    /**
      * @return void
      * @test
      */
