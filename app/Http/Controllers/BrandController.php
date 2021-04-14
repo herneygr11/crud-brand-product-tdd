@@ -66,4 +66,10 @@ class BrandController extends Controller
         return redirect()->route("brands.index");
     }
 
+    public function destroy(Brand $brand)
+    {
+        $brand->delete();
+        return redirect()->route("brands.index");
+    }
+
 }
