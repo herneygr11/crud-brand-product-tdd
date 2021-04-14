@@ -177,4 +177,38 @@ class ControllerBrandTest extends TestCase
 
         $this->assertDatabaseHas('brands', $data);
     }
+
+            /**
+     * @return void
+     * @test
+     */
+    public function an_unauthenticated_user_cannot_delete_brands()
+    {
+        $brand = Brand::factory()->create();
+
+        $this->delete(route('brands.destroy', $brand->slug))
+        ->assertStatus(302)
+        ->assertRedirect("login");
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function an_authenticated_user_can_delete_brands()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $brand = Brand::factory()->create();
+
+        $this
+            ->delete(route('brands.destroy', $brand->slug))
+            ->assertStatus(302)
+            ->assertRedirect(route("brands.index"));
+
+        $this->assertSoftDeleted("brands", $brand);
+    }
 }
