@@ -83,6 +83,11 @@ cp .env.example .env
 php artisan key:generate
 ```
 
+1. run migrations and seeders
+```sh
+php artisan migrate --seed
+```
+
 2. run server local
 ```sh
 php artisan serve
