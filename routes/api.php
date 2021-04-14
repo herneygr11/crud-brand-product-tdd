@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('brands', App\Http\Controllers\API\BrandController::class);
-Route::resource('products', App\Http\Controllers\API\ProductController::class);
+Route::apiResource('brands', App\Http\Controllers\API\BrandController::class);
+Route::apiResource('products', App\Http\Controllers\API\ProductController::class);

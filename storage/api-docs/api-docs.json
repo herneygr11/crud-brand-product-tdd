@@ -1,0 +1,100 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API CRUD",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/"
+        },
+        {
+            "url": "http://127.0.0.1:8000/"
+        }
+    ],
+    "paths": {
+        "/api/brands": {
+            "get": {
+                "summary": "Mostrar Marcas",
+                "operationId": "App\\Http\\Controllers\\API\\BrandController::index",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todos las Marcas."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/brands/{slug}": {
+            "get": {
+                "summary": "Mostrar una Marca",
+                "operationId": "App\\Http\\Controllers\\API\\BrandController::show",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "description": "Slug de la marca",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "xiaomi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mostrar una de las Marcas."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/products": {
+            "get": {
+                "summary": "Mostrar Productos",
+                "operationId": "App\\Http\\Controllers\\API\\ProductController::index",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todos los productos."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/products/{slug}": {
+            "get": {
+                "summary": "Mostrar un Producto",
+                "operationId": "App\\Http\\Controllers\\API\\ProductController::show",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "description": "Slug del producto",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "iapple"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mostrar uno de las Productos."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
