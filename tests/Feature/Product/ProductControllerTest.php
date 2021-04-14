@@ -179,12 +179,16 @@ class ProductControllerTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
+        $brand = Brand::factory()->create();
+
         $product = Product::factory()->create();
         $data = [
             "name"              => "iPhone 11",
             "size"              => "L",
             "observations"      => "El iPhone 11 refleja el compromiso continuo de Apple con el medio ambiente.",
             "stock"             => 10,
+            "shipment"          => Date::now(),
+            "brand_id"          => $brand->id,
         ];
 
         $this
@@ -192,7 +196,10 @@ class ProductControllerTest extends TestCase
             ->assertStatus(302)
             ->assertRedirect(route("products.index"));
 
-        $this->assertDatabaseHas('products', $data);
+        $this->assertDatabaseHas('products', [
+            "name"          => $data["name"],
+            "observations"  => $data["observations"],
+        ]);
     }
 
                 /**
