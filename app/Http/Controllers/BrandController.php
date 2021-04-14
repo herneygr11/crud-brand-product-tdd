@@ -41,4 +41,16 @@ class BrandController extends Controller
         return redirect()->route("brands.index");
     }
 
+    /**
+     * edit
+     *
+     * @param  mixed $request
+     * @param  mixed $brand
+     * @return void
+     */
+    public function edit(Request $request, Brand $brand)
+    {
+        return view("brands.edit", compact('brand'));
+    }
+
 }
