@@ -20,6 +20,9 @@ Route::get('/', function () {
 Route::resource('brands', App\Http\Controllers\BrandController::class)
 ->middleware('auth');
 
+Route::resource('products', App\Http\Controllers\ProductController::class)
+->middleware('auth');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
