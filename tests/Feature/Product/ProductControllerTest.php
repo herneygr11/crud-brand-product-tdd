@@ -148,4 +148,50 @@ class ProductControllerTest extends TestCase
             ->assertStatus(200)
             ->assertViewIs("products.edit");
     }
+
+            /**
+     * @return void
+     * @test
+     */
+    public function an_unauthenticated_user_cannot_update_products()
+    {
+        $product = Product::factory()->create();
+
+        $this->put(route('products.update', $product->slug), [
+            "name"              => "iPhone 11",
+            "size"              => "L",
+            "observations"      => "El iPhone 11 refleja el compromiso continuo de Apple con el medio ambiente.",
+            "stock"             => 10,
+            "shipment"          => Date::now(),
+        ])
+        ->assertStatus(302)
+        ->assertRedirect("login");
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function an_authenticated_user_can_update_products()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $product = Product::factory()->create();
+        $data = [
+            "name"              => "iPhone 11",
+            "size"              => "L",
+            "observations"      => "El iPhone 11 refleja el compromiso continuo de Apple con el medio ambiente.",
+            "stock"             => 10,
+        ];
+
+        $this
+            ->put(route('products.update', $product->slug), $data)
+            ->assertStatus(302)
+            ->assertRedirect(route("products.index"));
+
+        $this->assertDatabaseHas('products', $data);
+    }
 }
