@@ -29,4 +29,16 @@ class BrandController extends Controller
         return view('brands.create');
     }
 
+    /**
+     * store
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function store(Request $request)
+    {
+        Brand::create($request->all());
+        return redirect()->route("brands.index");
+    }
+
 }
