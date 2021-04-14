@@ -67,7 +67,7 @@ composer install
 
 3. Install Npm packages
 ```sh
-npm install
+npm install && npm run dev
 ```
 
 4. Create Databases
@@ -83,12 +83,12 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-1. run migrations and seeders
+2. run migrations and seeders
 ```sh
 php artisan migrate --seed
 ```
 
-2. run server local
+3. run server local
 ```sh
 php artisan serve
 ```
