@@ -194,4 +194,41 @@ class ProductControllerTest extends TestCase
 
         $this->assertDatabaseHas('products', $data);
     }
+
+                /**
+     * @return void
+     * @test
+     */
+    public function an_unauthenticated_user_cannot_delete_products()
+    {
+        $product = Product::factory()->create();
+
+        $this->delete(route('products.destroy', $product->slug))
+        ->assertStatus(302)
+        ->assertRedirect("login");
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function an_authenticated_user_can_delete_products()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $product = Product::factory()->create();
+
+        $this
+            ->delete(route('products.destroy', $product->slug))
+            ->assertStatus(302)
+            ->assertRedirect(route("products.index"));
+
+        $this->assertSoftDeleted('products', [
+            "name"  => $product->name,
+            "slug"  => $product->slug,
+        ]);
+    }
 }
