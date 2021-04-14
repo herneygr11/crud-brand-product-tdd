@@ -209,6 +209,9 @@ class ControllerBrandTest extends TestCase
             ->assertStatus(302)
             ->assertRedirect(route("brands.index"));
 
-        $this->assertSoftDeleted("brands", $brand);
+        $this->assertSoftDeleted('brands', [
+            "name"  => $brand->name,
+            "slug"  => $brand->slug,
+        ]);
     }
 }
