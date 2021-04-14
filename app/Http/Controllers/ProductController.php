@@ -30,7 +30,7 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-        /**
+    /**
      * store
      *
      * @param  mixed $request
@@ -42,5 +42,17 @@ class ProductController extends Controller
 
         Product::create($request->all());
         return redirect()->route("products.index");
+    }
+
+    /**
+     * edit
+     *
+     * @param  mixed $request
+     * @param  mixed $product
+     * @return void
+     */
+    public function edit(Request $request, Product $product)
+    {
+        return view("products.edit", compact('product'));
     }
 }
