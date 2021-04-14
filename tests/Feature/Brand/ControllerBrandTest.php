@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class ControllerBrandTest extends TestCase
@@ -104,7 +105,7 @@ class ControllerBrandTest extends TestCase
             $this->assertDatabaseHas('brands', $data);
     }
 
-        /**
+    /**
      * @return void
      * @test
      */
@@ -134,5 +135,46 @@ class ControllerBrandTest extends TestCase
             ->get(route('brands.edit', $brand->slug))
             ->assertStatus(200)
             ->assertViewIs("brands.edit");
+    }
+
+        /**
+     * @return void
+     * @test
+     */
+    public function an_unauthenticated_user_cannot_update_brands()
+    {
+        $brand = Brand::factory()->create();
+
+        $this->put(route('brands.update', $brand->slug), [
+            "name"  => "Xiomi",
+            "slug"  => Str::slug("Xiomi")
+        ])
+        ->assertStatus(302)
+        ->assertRedirect("login");
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function an_authenticated_user_can_update_brands()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $brand = Brand::factory()->create();
+        $data = [
+            "name"  => "Xiomi",
+            "slug"  => Str::slug("Xiomi")
+        ];
+
+        $this
+            ->put(route('brands.update', $brand->slug), $data)
+            ->assertStatus(200)
+            ->assertRedirect(route("brands.index"));
+
+        $this->assertDatabaseHas('brands', $data);
     }
 }
