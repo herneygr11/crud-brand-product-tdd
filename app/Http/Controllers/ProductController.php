@@ -55,4 +55,19 @@ class ProductController extends Controller
     {
         return view("products.edit", compact('product'));
     }
+
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $product
+     * @return void
+     */
+    public function update(Request $request, Product $product)
+    {
+        $request['slug'] = Str::slug($request->name);
+
+        $product->update($request->all());
+        return redirect()->route("products.index");
+    }
 }
