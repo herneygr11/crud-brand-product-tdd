@@ -72,7 +72,7 @@ class ProductControllerTest extends TestCase
             ->assertViewIs("products.create");
     }
 
-        /**
+    /**
      * @return void
      * @test
      */
@@ -149,7 +149,7 @@ class ProductControllerTest extends TestCase
             ->assertViewIs("products.edit");
     }
 
-            /**
+    /**
      * @return void
      * @test
      */
@@ -202,7 +202,7 @@ class ProductControllerTest extends TestCase
         ]);
     }
 
-                /**
+    /**
      * @return void
      * @test
      */
@@ -238,4 +238,5 @@ class ProductControllerTest extends TestCase
             "slug"  => $product->slug,
         ]);
     }
+
 }
