@@ -24,7 +24,8 @@ class ControllerBrandTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $response = $this->get(route('brands.index'));
-        $response->assertStatus(200);
+        $this->get(route('brands.index'))
+        ->assertStatus(200)
+        ->assertViewIs("brands.index");
     }
 }
