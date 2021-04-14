@@ -72,6 +72,12 @@ class BrandController extends Controller
         return redirect()->route("brands.index");
     }
 
+    /**
+     * destroy
+     *
+     * @param  mixed $brand
+     * @return void
+     */
     public function destroy(Brand $brand)
     {
         $brand->delete();
