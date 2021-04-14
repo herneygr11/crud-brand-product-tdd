@@ -24,4 +24,14 @@ class Product extends Model
         "shipment",
         "brand_id",
     ];
+
+    /**
+     * getRouteKeyName
+     *
+     * @return void
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
