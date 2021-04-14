@@ -39,4 +39,32 @@ class ProductControllerTest extends TestCase
             ->assertViewIs("products.index")
             ->assertViewHas("products");
     }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function an_unauthenticated_user_cannot_see_the_product_create_view()
+    {
+        $this->get(route('products.create'))
+        ->assertStatus(302)
+        ->assertRedirect("login");
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function an_authenticated_user_can_see_the_product_create_view()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $this
+            ->get(route('products.create'))
+            ->assertStatus(200)
+            ->assertViewIs("products.create");
+    }
 }
