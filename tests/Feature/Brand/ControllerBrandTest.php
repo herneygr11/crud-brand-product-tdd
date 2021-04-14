@@ -67,4 +67,39 @@ class ControllerBrandTest extends TestCase
             ->assertStatus(200)
             ->assertViewIs("brands.create");
     }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function an_unauthenticated_user_cannot_create_brands()
+    {
+        $this->post(route('brands.store'), [])
+        ->assertStatus(302)
+        ->assertRedirect("login");
+    }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function an_authenticated_user_can_create_brands()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $data = [
+            "name"  => "Apple",
+            "slug"  => "apple"
+        ];
+
+        $this
+            ->post(route('brands.store'), )
+            ->assertStatus(302)
+            ->assertRedirect(route("brands.index"));
+
+            $this->assertDatabaseHas('brands', $data);
+    }
 }
