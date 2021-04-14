@@ -172,7 +172,7 @@ class ControllerBrandTest extends TestCase
 
         $this
             ->put(route('brands.update', $brand->slug), $data)
-            ->assertStatus(200)
+            ->assertStatus(302)
             ->assertRedirect(route("brands.index"));
 
         $this->assertDatabaseHas('brands', $data);
