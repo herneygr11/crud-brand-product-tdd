@@ -1,62 +1,114 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
+<!-- PROJECT LOGO -->
+<br />
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <h3 align="center">LARAVEL CRUD MARCAS, PRODUCTOS TDD</h3>
 </p>
 
-## About Laravel
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+  * [Run Project](#run-project)
+* [API documentation](#api-documentation)
+* [Why testing is important](#why-testing-is-important)
+  * [Integration run test](#integration-run-test)
+* [Contact](#contact)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+CRUD of brands and products applying tdd and good practices
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+With TDD:
+* Development with quality and you keep improving.
 
-## Laravel Sponsors
+### Built With
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+* [Laravel](https://laravel.com)
+* [TailwindCSS](https://tailwindcss.com/)
+* [mysql](https://dev.mysql.com/doc/)
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+<!-- GETTING STARTED -->
+## Getting Started
 
-## Contributing
+To get a local copy up and running follow these simple example steps.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Prerequisites
 
-## Code of Conduct
+* PHP >= 7.3
+* BCMath PHP Extension
+* Ctype PHP Extension
+* Fileinfo PHP Extension
+* JSON PHP Extension
+* Mbstring PHP Extension
+* OpenSSL PHP Extension
+* PDO PHP Extension
+* Tokenizer PHP Extension
+* XML PHP Extension
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Installation
 
-## Security Vulnerabilities
+1. Clone the repo
+```sh
+git clone https://github.com/herneygr11/crud-brand-product-tdd.git
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. Install Composer packages
+```sh
+composer install
+```
 
-## License
+3. Install Npm packages
+```sh
+npm install
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. Create Databases
+```sh
+    crud_brand_product_tdd and crud_brand_product_tdd_test
+```
+
+### Run Project
+
+1. copy the environment variable file
+```sh
+cp .env.example .env
+php artisan key:generate
+```
+
+2. run server local
+```sh
+php artisan serve
+```
+
+## API documentation
+```sh
+ php artisan l5-swagger:generate
+```
+
+```sh
+  go: http://127.0.0.1:8000/api/documentation
+```
+
+## Why testing is important
+At a high level, software testing is necessary to detect bugs in the software and to test whether the software meets the customer's requirements. This helps the development team correct bugs and deliver a good quality product.
+
+### Integration run test
+
+```sh
+php artisan test
+```
+<!-- CONTACT -->
+## Contact
+
+Herney Ruiz - herneyruiz36@gmail.com
+
+---
+[HerneyRuiz](https://github.com/RuizHerney) with ❤️
